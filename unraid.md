@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
+<img src="/blog/assets/img/unraidlogo.jpg" height="200x" width="100%">
+* * *
+
+><center>unRAID is software for storing and managing digital files on a mass-storage server.  In more technical terms, unRAID® is an embedded Network Attached Storage (NAS) server operating system.  It was >specifically designed for digital media storage (e.g., videos, photos, music, & movies).  It allows you to build an array of hard drives and share the data from those drives across the local network >(typically within a house or business).  Importantly, it protects all the data on the drives if one should fail.</center>
+
 <h1>Unraid Posts</h1>
 
 <div class="home">
