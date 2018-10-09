@@ -3,18 +3,21 @@ layout: default
 ---
 
 <h1>Unraid</h1>
+* * *
 
->unRAID is software for storing and managing digital files on a mass-storage server.  In more technical terms, unRAID® is an embedded Network Attached Storage (NAS) server operating system.  It was >specifically designed for digital media storage (e.g., videos, photos, music, & movies).  It allows you to build an array of hard drives and share the data from those drives across the local network >(typically within a house or business).  Importantly, it protects all the data on the drives if one should fail.
+>unRAID is software for storing and managing digital files on a mass-storage server.  In more technical terms, unRAID® is an embedded Network Attached Storage (NAS) server operating system.  It was >specifically designed for digital media storage (e.g., videos, photos, music, & movies).
+>
+>It allows you to build an array of hard drives and share the data from those drives across the local network >(typically within a house or business).  Importantly, it protects all the data on the drives if one should fail.
 
 <h2>Unraid Posts</h2>
-
+* * *
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
     {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    {% comment %}<h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>{% endcomment %}
     <ul class="post-list">
       {%- for post in site.categories.unraid -%}
       <li>
