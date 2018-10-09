@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<img src="/blog/assets/img/nextcloudlogo.png" height="200x" width="100%">
+<center><img src="/blog/assets/img/nextcloudlogo.png" height="100x" width="30%"></center>
 * * *
 
 ><center><p>Nextcloud is a suite of client-server software for creating and using file hosting services. It is functionally similar to Dropbox, although Nextcloud is free and open-source, allowing anyone to install and operate it on a private server.</p>
