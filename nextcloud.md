@@ -4,13 +4,13 @@ layout: default
 
 <h1>Nextcloud</h1>
 * * *
-><p>Nextcloud is a suite of client-server software for creating and using file hosting services. It is functionally similar to Dropbox, although Nextcloud is free and open-source, allowing anyone to install and operate it on a private server.</p>
+><p>Nextcloud es una serie de programas cliente-servidor con el objetivo de crear servicio de alojamiento de archivos. </p>
 >
-><p>In contrast to proprietary services like Dropbox, the open architecture allows adding functionality to the server in the form of applications and enables users to have full control of their data.</p>
+><p>Su funcionalidad es similar al software Dropbox, aunque Nextcloud es de tipo código abierto, permitiendo a quien lo desee instalarlo en un servidor privado. Su arquitectura abierta permite añadir funcionalidad al servidor en forma de aplicaciones. </p>
 >
-><p>The original ownCloud developer Frank Karlitschek forked ownCloud and created Nextcloud, which continues to be actively developed by Karlitschek and other members of the original ownCloud team.</p>
+><p>Nextcloud es un proyecto paralelo de ownCloud que también es un software de servicio de alojamiento en la nube.</p>
 
-<h2>Nextcloud Posts</h2>
+<h2>Posts de Nextcloud</h2>
 * * *
 <div class="home">
   {%- if page.title -%}
@@ -36,7 +36,7 @@ layout: default
       {%- endfor -%}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    <p class="rss-subscribe">Subscribete <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
 
 </div>

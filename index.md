@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<h1>Home</h1>
+<h1>Inicio</h1>
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>

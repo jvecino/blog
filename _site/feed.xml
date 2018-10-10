@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-10T09:58:09+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>This blog is born from a personal need to centralize acquired knowledge about homelab, self hosting and new technologies. It is especially dedicated to those people who are struggling to self-learning because they love it!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como hacer passthrough the una NIC a una VM en Unraid</title><link href="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="Como hacer passthrough the una NIC a una VM en Unraid" /><published>2018-10-12T00:00:00+02:00</published><updated>2018-10-12T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html">&lt;h1&gt;Como hacer passthrough the una NIC a una VM en Unraid&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-10T18:19:30+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nasce de la necesidad personal de centralizar los conocimientos adquiridos  de homelab, self hosting y nuevas técnologias. Esta especialmente dedicado a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como hacer passthrough the una NIC a una VM en Unraid</title><link href="http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="Como hacer passthrough the una NIC a una VM en Unraid" /><published>2018-10-10T00:00:00+02:00</published><updated>2018-10-10T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough.html">&lt;h1&gt;Como hacer passthrough the una NIC a una VM en Unraid&lt;/h1&gt;
 &lt;hr /&gt;
+
 &lt;h5&gt;&lt;em&gt;Acrónimos: VM (máquina virtual), NIC (tarjeta de red)&lt;/em&gt;&lt;/h5&gt;
 
 &lt;p&gt;A la hora de crear una VM, si el rendimiento es una prioridad, la VM necesita tener acceso directo a todo el hardware posible de nuestro servidor.&lt;/p&gt;
@@ -75,30 +76,24 @@
 
 &lt;p&gt;Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.&lt;/p&gt;
 
-&lt;p&gt;Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como hacer passthrough the una NIC a una VM en Unraid Acrónimos: VM (máquina virtual), NIC (tarjeta de red)</summary></entry><entry><title type="html">ElasticSearch install on Nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="ElasticSearch install on Nextcloud" /><published>2018-10-08T00:00:00+02:00</published><updated>2018-10-08T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html">&lt;h1&gt;ElasticSearch install on Nextcloud&lt;/h1&gt;
+&lt;p&gt;Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como hacer passthrough the una NIC a una VM en Unraid</summary></entry><entry><title type="html">Instalar y usar Elasticsearch en nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="Instalar y usar Elasticsearch en nextcloud" /><published>2018-10-08T00:00:00+02:00</published><updated>2018-10-08T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html">&lt;h1&gt;Instalación de Elasticsearch en Nextcloud&lt;/h1&gt;
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;em&gt;ElasticSearch is an open source, RESTful search engine built on top of Apache Lucene and released under an Apache license. It is Java-based and can search and index document files in diverse formats.&lt;/em&gt;&lt;/p&gt;
+&lt;h5&gt;Probado en **ubuntu 16.04**&lt;/h5&gt;
 
-&lt;p&gt;&lt;em&gt;It allows fast searches inside Nextcloud from various sources like, local files, external storage, bookmarks etc…&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Instalación desde la appstore de Nextcloud&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;Tested in &lt;strong&gt;ubuntu 16.04&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Here we go!&lt;/p&gt;
-
-&lt;h2&gt;Install from Nextcloud appstore&lt;/h2&gt;
-
-&lt;p&gt;Login to your Nextcloud server and go to Applications and install the plugin.&lt;/p&gt;
+&lt;p&gt;Logeate en tu instancia de Nextcloud, descarga el plugin y activalo&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/img/elasticsearchdownload.png&quot; alt=&quot;nextclouddownload&quot; /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Install Java&lt;/h2&gt;
+&lt;h2&gt;Instalar Java&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;sudo add-apt-repository ppa:webupd8team/java&lt;br /&gt;
 sudo apt-get update&lt;br /&gt;
 sudo apt update &amp;amp;&amp;amp; sudo apt install oracle-java8-installer &amp;amp;&amp;amp; sudo apt install oracle-java8-set-default&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Install and enable elasticsearch&lt;/h2&gt;
+&lt;h2&gt;Instalar y habilitar elasticsearch&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -&lt;br /&gt;&lt;br /&gt; echo &quot;deb https://artifacts.elastic.co/packages/6.x/apt stable main&quot; | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list&lt;br /&gt;&lt;br /&gt;
 sudo apt update &amp;amp;&amp;amp; sudo apt install elasticsearch&lt;br /&gt;
@@ -106,29 +101,27 @@ sudo systemctl daemon-reload&lt;br /&gt;
 sudo systemctl enable elasticsearch&lt;br /&gt;
 sudo systemctl start elasticsearch&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Install elasticsearch ingest-attachment plugin&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;so Nextcloud can extract file attachments in common formats&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Instalar plugin ingest-attachment de elasticsearch&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Así nextcloud podrá extraer archivos adjuntos en varios formatos&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Set elasticsearch to listen to localhost only&lt;/h2&gt;
+&lt;h2&gt;Cambiar elasticsearch para que solo escuche en localhost&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sudo nano /etc/elasticsearch/elasticsearch.yml&lt;/code&gt;&lt;br /&gt;
-and add &lt;code&gt;network.host: 127.0.0.1&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
+y añade esta linea &lt;code&gt;network.host: 127.0.0.1&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Restart elasticsearch&lt;/h2&gt;
+&lt;h2&gt;Reiniciar elasticsearch&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sudo systemctl restart elasticsearch&lt;/code&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Check if elasticsearch is running&lt;/h2&gt;
+&lt;h2&gt;Comprobar que se está ejecutando elasticsearch&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sudo curl 'localhost:9200/?pretty'&lt;br /&gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2&gt;Configure Nextcloud&lt;/h2&gt;
-&lt;p&gt;Go to &lt;strong&gt;Applications&lt;/strong&gt; &amp;gt; &lt;strong&gt;fulltextsearch&lt;/strong&gt; and change settings:&lt;/p&gt;
+&lt;h2&gt;Configurar Nextcloud&lt;/h2&gt;
+&lt;p&gt;Ir a &lt;strong&gt;Aplicaciones&lt;/strong&gt; &amp;gt; &lt;strong&gt;fulltextsearch&lt;/strong&gt; y cambiar la configuración a la siguiente:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/img/elasticsearchconfig.png&quot; alt=&quot;nextcloudconfig&quot; /&gt;&lt;/p&gt;
 
-&lt;h2&gt;Index Everything first&lt;/h2&gt;
+&lt;h2&gt;Primera indexación masiva&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sudo -u www-data php /var/www/html/nextcloud/occ fulltextsearch:index&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2&gt;Enjoy!&lt;/h2&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">ElasticSearch install on Nextcloud</summary></entry><entry><title type="html">Welcome to my blog</title><link href="http://localhost:4000/blog/2018/10/07/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to my blog" /><published>2018-10-07T00:00:00+02:00</published><updated>2018-10-07T00:00:00+02:00</updated><id>http://localhost:4000/blog/2018/10/07/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/2018/10/07/welcome-to-jekyll.html">&lt;h1&gt;Welcome to my blog&lt;/h1&gt;
-&lt;h2&gt;Welcome to my blog&lt;/h2&gt;
-&lt;h3&gt;Welcome to my blog&lt;/h3&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Welcome to my blog Welcome to my blog Welcome to my blog</summary></entry></feed>
+&lt;h2&gt;Enjoy!&lt;/h2&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Instalación de Elasticsearch en Nextcloud</summary></entry></feed>

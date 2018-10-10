@@ -5,6 +5,7 @@ categories: unraid
 ---
 <h1>Como hacer passthrough the una NIC a una VM en Unraid</h1>
 * * *
+
 <h5><em>Acrónimos: VM (máquina virtual), NIC (tarjeta de red)</em></h5>
 
 <p>A la hora de crear una VM, si el rendimiento es una prioridad, la VM necesita tener acceso directo a todo el hardware posible de nuestro servidor.</p>
