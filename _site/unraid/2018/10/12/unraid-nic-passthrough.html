@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Como hacer passthrough the una NIC a una VM en Unraid | Joao Vecino tech blog</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Como hacer passthrough the una NIC a una VM en Unraid" />
+<meta name="author" content="Joao Carlos Correia Vecino Vieira" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Como hacer passthrough the una NIC a una VM en Unraid Acrónimos: VM (máquina virtual), NIC (tarjeta de red)" />
+<meta property="og:description" content="Como hacer passthrough the una NIC a una VM en Unraid Acrónimos: VM (máquina virtual), NIC (tarjeta de red)" />
+<link rel="canonical" href="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html" />
+<meta property="og:url" content="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html" />
+<meta property="og:site_name" content="Joao Vecino tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-12T00:00:00+02:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html","headline":"Como hacer passthrough the una NIC a una VM en Unraid","dateModified":"2018-10-12T00:00:00+02:00","datePublished":"2018-10-12T00:00:00+02:00","description":"Como hacer passthrough the una NIC a una VM en Unraid Acrónimos: VM (máquina virtual), NIC (tarjeta de red)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html"},"author":{"@type":"Person","name":"Joao Carlos Correia Vecino Vieira"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+      <link rel="stylesheet" href="/blog/assets/css/style.css?v=">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Joao Vecino tech blog</h1>
+      <h2 class="project-tagline">This blog is born from a personal need to centralize acquired knowledge about homelab, self hosting and new technologies. It is especially dedicated to those people who are struggling to self-learning because they love it!</h2>
+      
+      
+    
+         <a href="/blog/" class="btn">Home</a>
+      
+	  
+       <a href="/blog/nextcloud" class="btn">Nextcloud</a>
+       <a href="/blog/unraid" class="btn">Unraid</a>
+    
+    </section>
+
+    <section class="main-content">
+      <h1>Como hacer passthrough the una NIC a una VM en Unraid</h1>
+<hr />
+<h5><em>Acrónimos: VM (máquina virtual), NIC (tarjeta de red)</em></h5>
+
+<p>A la hora de crear una VM, si el rendimiento es una prioridad, la VM necesita tener acceso directo a todo el hardware posible de nuestro servidor.</p>
+
+<p>Con esto nos quitamos los problemas que pueden surgir de la virtualización dado que este hardware no estará emulado. Conseguiremos un rendimiento máximo del componente y evitaremos que unraid intervenga en el funcionamiento de este.</p>
+
+<p>Para este proposito necesitamos unraid y una tarjeta de red que vayamos a dedicar a una o varias VM (en el caso de que tenga mas de un puerto)</p>
+
+<p>Cada puerto se puede asignar individualmente a una VM.</p>
+
+<p>Vamos allá:</p>
+
+<h2>Asegurarse de que nuestra cpu admita IOMMU</h2>
+<hr />
+<p><img src="/blog/assets/img/nic-pass-1.png" alt="iommu" /></p>
+
+<h2>Verificar si nuestra NIC esta en un grupo de IOMMU separado</h2>
+<hr />
+<p><img src="/blog/assets/img/nic-pass-2.png" alt="iommu" /></p>
+
+<p>En nuestro caso no lo está</p>
+
+<p>Para solucionar esto hay que ir a <strong>Settings</strong> &gt; <strong>Vm Manager</strong> &gt; <strong>PCIe ACS override</strong> &gt; <strong>Enable</strong></p>
+
+<p><em>Nota: Antes tendremos que parar el servicio de VM desde el VM manager</em></p>
+
+<p>Nos pedirá reiniciar el servidor.</p>
+
+<h2>Identificar nuestra NIC en Unraid</h2>
+<hr />
+<p>Abrimos una terminal en el servidor y ejecutamos</p>
+
+<p><code>root@Tower:~#lspci -n</code></p>
+
+<blockquote>
+  <p>09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
+09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
+0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
+0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br /></p>
+</blockquote>
+
+<p>Nos saldrá nuestra NIC y todo el demás hardware.</p>
+
+<p>En nuestro caso es una nic de 4 puertos.</p>
+
+<p>Ejecutamos</p>
+
+<p><code>root@Tower:~# lspci -n</code></p>
+
+<blockquote>
+  <p>09:00.0 0200: 8086:10bc (rev 06)<br />
+09:00.1 0200: 8086:10bc (rev 06)<br />
+0a:00.0 0200: 8086:10bc (rev 06)<br />
+0a:00.1 0200: 8086:10bc (rev 06)<br /></p>
+</blockquote>
+
+<p>Buscamos los ids que coincidan y el dato que necesitamos es el de la parte derecha. En nuestro caso <strong>8086:10bc</strong></p>
+
+<h2>Decirle a Unraid que no use la NIC</h2>
+<hr />
+<p>Nos vamos a <strong>Main</strong> &gt; <strong>Flash</strong> &gt; <strong>Syslinux Configuration</strong></p>
+
+<p>Y en label UNRAID OS cambiamos la linea de append y agregamos ‘pci-stub.ids=8086:10bc’:</p>
+
+<blockquote>
+  <p>label unRAID OS<br />
+    menu default<br />
+    kernel /bzimage<br />
+    append pci-stub.ids=8086:10bc initrd=/bzroot<br /></p>
+</blockquote>
+
+<p>Guardamos y reiniciamos el servidor.</p>
+
+<p>Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.</p>
+
+<p>Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…</p>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

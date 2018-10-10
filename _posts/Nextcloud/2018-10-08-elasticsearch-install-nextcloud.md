@@ -58,3 +58,5 @@ Go to **Applications** > **fulltextsearch** and change settings:
 <code>sudo -u www-data php /var/www/html/nextcloud/occ fulltextsearch:index</code>
 
 <h2>Enjoy!</h2>
+
+ {% comment %}{% youtube "https://www.youtube.com/watch?v=5WsBQZlt9FM" %}{% endcomment %}

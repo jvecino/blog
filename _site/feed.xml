@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-09T14:05:29+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>This blog is born from a personal need to centralize acquired knowledge about homelab, self hosting and new technologies. It is especially dedicated to those people who are struggling to self-learning because they love it!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">How to passthrough a network card to a VM</title><link href="http://localhost:4000/blog/unraid/2018/10/09/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="How to passthrough a network card to a VM" /><published>2018-10-09T00:00:00+02:00</published><updated>2018-10-09T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/09/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/09/unraid-nic-passthrough.html">&lt;p&gt;blablabla&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">blablabla</summary></entry><entry><title type="html">ElasticSearch install on Nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="ElasticSearch install on Nextcloud" /><published>2018-10-08T00:00:00+02:00</published><updated>2018-10-08T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html">&lt;h1&gt;ElasticSearch install on Nextcloud&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-10T09:58:09+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>This blog is born from a personal need to centralize acquired knowledge about homelab, self hosting and new technologies. It is especially dedicated to those people who are struggling to self-learning because they love it!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como hacer passthrough the una NIC a una VM en Unraid</title><link href="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="Como hacer passthrough the una NIC a una VM en Unraid" /><published>2018-10-12T00:00:00+02:00</published><updated>2018-10-12T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html">&lt;h1&gt;Como hacer passthrough the una NIC a una VM en Unraid&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h5&gt;&lt;em&gt;Acrónimos: VM (máquina virtual), NIC (tarjeta de red)&lt;/em&gt;&lt;/h5&gt;
+
+&lt;p&gt;A la hora de crear una VM, si el rendimiento es una prioridad, la VM necesita tener acceso directo a todo el hardware posible de nuestro servidor.&lt;/p&gt;
+
+&lt;p&gt;Con esto nos quitamos los problemas que pueden surgir de la virtualización dado que este hardware no estará emulado. Conseguiremos un rendimiento máximo del componente y evitaremos que unraid intervenga en el funcionamiento de este.&lt;/p&gt;
+
+&lt;p&gt;Para este proposito necesitamos unraid y una tarjeta de red que vayamos a dedicar a una o varias VM (en el caso de que tenga mas de un puerto)&lt;/p&gt;
+
+&lt;p&gt;Cada puerto se puede asignar individualmente a una VM.&lt;/p&gt;
+
+&lt;p&gt;Vamos allá:&lt;/p&gt;
+
+&lt;h2&gt;Asegurarse de que nuestra cpu admita IOMMU&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/nic-pass-1.png&quot; alt=&quot;iommu&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Verificar si nuestra NIC esta en un grupo de IOMMU separado&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/nic-pass-2.png&quot; alt=&quot;iommu&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;En nuestro caso no lo está&lt;/p&gt;
+
+&lt;p&gt;Para solucionar esto hay que ir a &lt;strong&gt;Settings&lt;/strong&gt; &amp;gt; &lt;strong&gt;Vm Manager&lt;/strong&gt; &amp;gt; &lt;strong&gt;PCIe ACS override&lt;/strong&gt; &amp;gt; &lt;strong&gt;Enable&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Nota: Antes tendremos que parar el servicio de VM desde el VM manager&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Nos pedirá reiniciar el servidor.&lt;/p&gt;
+
+&lt;h2&gt;Identificar nuestra NIC en Unraid&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Abrimos una terminal en el servidor y ejecutamos&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;root@Tower:~#lspci -n&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br /&gt;
+09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br /&gt;
+0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br /&gt;
+0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nos saldrá nuestra NIC y todo el demás hardware.&lt;/p&gt;
+
+&lt;p&gt;En nuestro caso es una nic de 4 puertos.&lt;/p&gt;
+
+&lt;p&gt;Ejecutamos&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;root@Tower:~# lspci -n&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;09:00.0 0200: 8086:10bc (rev 06)&lt;br /&gt;
+09:00.1 0200: 8086:10bc (rev 06)&lt;br /&gt;
+0a:00.0 0200: 8086:10bc (rev 06)&lt;br /&gt;
+0a:00.1 0200: 8086:10bc (rev 06)&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Buscamos los ids que coincidan y el dato que necesitamos es el de la parte derecha. En nuestro caso &lt;strong&gt;8086:10bc&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2&gt;Decirle a Unraid que no use la NIC&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Nos vamos a &lt;strong&gt;Main&lt;/strong&gt; &amp;gt; &lt;strong&gt;Flash&lt;/strong&gt; &amp;gt; &lt;strong&gt;Syslinux Configuration&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Y en label UNRAID OS cambiamos la linea de append y agregamos ‘pci-stub.ids=8086:10bc’:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;label unRAID OS&lt;br /&gt;
+    menu default&lt;br /&gt;
+    kernel /bzimage&lt;br /&gt;
+    append pci-stub.ids=8086:10bc initrd=/bzroot&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Guardamos y reiniciamos el servidor.&lt;/p&gt;
+
+&lt;p&gt;Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.&lt;/p&gt;
+
+&lt;p&gt;Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como hacer passthrough the una NIC a una VM en Unraid Acrónimos: VM (máquina virtual), NIC (tarjeta de red)</summary></entry><entry><title type="html">ElasticSearch install on Nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="ElasticSearch install on Nextcloud" /><published>2018-10-08T00:00:00+02:00</published><updated>2018-10-08T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html">&lt;h1&gt;ElasticSearch install on Nextcloud&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;p&gt;&lt;em&gt;ElasticSearch is an open source, RESTful search engine built on top of Apache Lucene and released under an Apache license. It is Java-based and can search and index document files in diverse formats.&lt;/em&gt;&lt;/p&gt;

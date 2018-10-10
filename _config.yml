@@ -32,6 +32,8 @@ theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 
+plugins: [jekyll-youtube]
+
 
 
 defaults:
