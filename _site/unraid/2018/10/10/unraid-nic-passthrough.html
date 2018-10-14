@@ -34,6 +34,7 @@
 	  
        <a href="/blog/nextcloud" class="btn">Nextcloud</a>
        <a href="/blog/unraid" class="btn">Unraid</a>
+       <a href="/blog/docker" class="btn">Docker</a>
     
     </section>
 
@@ -72,31 +73,26 @@
 <h2>Identificar nuestra NIC en Unraid</h2>
 <hr />
 <p>Abrimos una terminal en el servidor y ejecutamos</p>
-
-<p><code>root@Tower:~#lspci -n</code></p>
-
-<blockquote>
-  <p>09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
-09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
-0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br />
-0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br /></p>
-</blockquote>
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@Tower:~#lspci -n
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br&gt;
+09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br&gt;
+0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br&gt;
+0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)&lt;br&gt;
+</code></pre></div></div>
 <p>Nos saldrá nuestra NIC y todo el demás hardware.</p>
 
 <p>En nuestro caso es una nic de 4 puertos.</p>
 
 <p>Ejecutamos</p>
 
-<p><code>root@Tower:~# lspci -n</code></p>
-
-<blockquote>
-  <p>09:00.0 0200: 8086:10bc (rev 06)<br />
-09:00.1 0200: 8086:10bc (rev 06)<br />
-0a:00.0 0200: 8086:10bc (rev 06)<br />
-0a:00.1 0200: 8086:10bc (rev 06)<br /></p>
-</blockquote>
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@Tower:~# lspci -n
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>09:00.0 0200: 8086:10bc (rev 06)
+09:00.1 0200: 8086:10bc (rev 06)
+0a:00.0 0200: 8086:10bc (rev 06)
+0a:00.1 0200: 8086:10bc (rev 06)
+</code></pre></div></div>
 <p>Buscamos los ids que coincidan y el dato que necesitamos es el de la parte derecha. En nuestro caso <strong>8086:10bc</strong></p>
 
 <h2>Decirle a Unraid que no use la NIC</h2>
@@ -105,13 +101,11 @@
 
 <p>Y en label UNRAID OS cambiamos la linea de append y agregamos ‘pci-stub.ids=8086:10bc’:</p>
 
-<blockquote>
-  <p>label unRAID OS<br />
-    menu default<br />
-    kernel /bzimage<br />
-    append pci-stub.ids=8086:10bc initrd=/bzroot<br /></p>
-</blockquote>
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>label unRAID OS&lt;br&gt;
+    menu default&lt;br&gt;
+    kernel /bzimage&lt;br&gt;
+    append pci-stub.ids=8086:10bc initrd=/bzroot&lt;br&gt;   
+</code></pre></div></div>
 <p>Guardamos y reiniciamos el servidor.</p>
 
 <p>Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.</p>

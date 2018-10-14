@@ -37,27 +37,30 @@ Nos pedirá reiniciar el servidor.
 <h2>Identificar nuestra NIC en Unraid</h2>
 * * *
 Abrimos una terminal en el servidor y ejecutamos
-
-<code>root@Tower:~#lspci -n</code>
-
->09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
->09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
->0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
->0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
-
+```
+root@Tower:~#lspci -n
+```
+```
+09:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
+09:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
+0a:00.1 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
+0a:00.0 Ethernet controller: Intel Corporation 82571EB/82571GB Gigabit Ethernet Controller (Copper) (rev 06)<br>
+```
 Nos saldrá nuestra NIC y todo el demás hardware.
 
 En nuestro caso es una nic de 4 puertos.
 
 Ejecutamos
 
-<code>root@Tower:~# lspci -n</code>
-
->09:00.0 0200: 8086:10bc (rev 06)<br>
->09:00.1 0200: 8086:10bc (rev 06)<br>
->0a:00.0 0200: 8086:10bc (rev 06)<br>
->0a:00.1 0200: 8086:10bc (rev 06)<br>
-
+```
+root@Tower:~# lspci -n
+```
+```
+09:00.0 0200: 8086:10bc (rev 06)
+09:00.1 0200: 8086:10bc (rev 06)
+0a:00.0 0200: 8086:10bc (rev 06)
+0a:00.1 0200: 8086:10bc (rev 06)
+```
 Buscamos los ids que coincidan y el dato que necesitamos es el de la parte derecha. En nuestro caso **8086:10bc**
 
 <h2>Decirle a Unraid que no use la NIC</h2>
@@ -66,11 +69,12 @@ Nos vamos a **Main** > **Flash** > **Syslinux Configuration**
 
 Y en label UNRAID OS cambiamos la linea de append y agregamos 'pci-stub.ids=8086:10bc':
 
->label unRAID OS<br>
->&nbsp;&nbsp;  menu default<br>
->&nbsp;&nbsp;  kernel /bzimage<br>
->&nbsp;&nbsp;  append pci-stub.ids=8086:10bc initrd=/bzroot<br>   
-
+```
+label unRAID OS<br>
+    menu default<br>
+    kernel /bzimage<br>
+    append pci-stub.ids=8086:10bc initrd=/bzroot<br>   
+```
 Guardamos y reiniciamos el servidor.
 
 Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.

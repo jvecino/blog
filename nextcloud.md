@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /nextcloud
 ---
 
 <h1>Nextcloud</h1>

@@ -1,16 +1,15 @@
 ---
 layout: default
-permalink: /unraid
+permalink: /docker
 ---
 
-<h1>Unraid</h1>
+<h1>Docker</h1>
 * * *
 
-><p>Unraid es un software para almacenar y manejar archivos digitales en un servidor de almacenamiento masivo. En detalles mas técnicos, unRAID es un sistema operativo de servidor de almacenamiento conectado en red embedido (NAS). Ha sido especialmente diseñado para almacenamiento de media digital (ej., videos, fotos, música y peliculas).</p>
->
-><p>Te permite crear un array de discos duros y compartir los datos de esos discos a través de la red local (normalmente en una casa o negocio). Más importante aún, protege toda la información de los discos en caso de que alguno de ellos falle.</p>
+><p>Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos. Docker utiliza características de aislamiento de recursos del kernel Linux, tales como cgroups y espacios de nombres (namespaces) para permitir que "contenedores" independientes se ejecuten dentro de una sola instancia de Linux, evitando la sobrecarga de iniciar y mantener máquinas virtales.​</p>
 
-<h2>Posts de Unraid</h2>
+
+<h2>Posts de Docker</h2>
 * * *
 <div class="home">
   {%- if page.title -%}
@@ -20,7 +19,7 @@ permalink: /unraid
     {%- if site.posts.size > 0 -%}
     {% comment %}<h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>{% endcomment %}
     <ul class="post-list">
-      {%- for post in site.categories.unraid -%}
+      {%- for post in site.categories.docker -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
