@@ -18,9 +18,7 @@ Pi-hole **no filtrará el 100% de publicidad o webs fraudulentas** y en algunas 
 
 Pi-hole se nutre de listados de webs realizado por la comunidad de usuarios.
 
-En mi caso uso el listado de **Block list project** que lo podrás encontrar en el siguiente enlace:
-
-https://tspprs.com/
+En mi caso uso el listado de **Block list project** que lo podrás encontrar en el siguiente [enlace](https://tspprs.com/ "Block list project").
 
 # Ejecutando PI-HOLE por primera vez
 
@@ -53,7 +51,6 @@ docker run -d \
 --restart=unless-stopped \
 'pihole/pihole:latest' \
 ```
-
 ## Explicado:
 
 <table>
@@ -62,7 +59,7 @@ docker run -d \
 <col width="85%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr class="header" bgcolor="#F8F8F8">
 <th>Parametro</th>
 <th>Descripción</th>
 </tr>
@@ -72,7 +69,7 @@ docker run -d \
 <td markdown="span">docker run -d</td>
 <td markdown="span">Ejecutar contenedor en background</td>
 </tr>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">--name='pihole'</td>
 <td markdown="span">Nombre contenedor
 </td>
@@ -80,7 +77,7 @@ docker run -d \
 <td markdown="span">--net='br0'</td>
 <td markdown="span">Interfaz de red de docker
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">--ip='192.168.1.22'</td>
 <td markdown="span">Ip que asignamos al Pi-hole
 </td>
@@ -88,7 +85,7 @@ docker run -d \
 <td markdown="span">-e TZ="Europe/Madrid"</td>
 <td markdown="span">Agrega el timezone
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e HOST_OS="Unraid"</td>
 <td markdown="span">SO del cliente de docker
 </td>
@@ -96,7 +93,7 @@ docker run -d \
 <td markdown="span">-e 'TCP_PORT_53'='5355'</td>
 <td markdown="span">Mapeo Puerto TCP
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'UDP_PORT_53'='5355'</td>
 <td markdown="span">Mapeo Puerto UDP
 </td>
@@ -104,7 +101,7 @@ docker run -d \
 <td markdown="span">-e 'TCP_PORT_80'='8055'</td>
 <td markdown="span">Mapeo Puerto TCP
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'PUID'='99'</td>
 <td markdown="span">User ID (por si hay problemas de permisos)
 </td>
@@ -112,7 +109,7 @@ docker run -d \
 <td markdown="span">-e 'PGID'='100'</td>
 <td markdown="span">Group ID (por si hay problemas de permisos)
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'ServerIP'='192.168.1.22'</td>
 <td markdown="span">Ip que asignamos al Pi-hole
 </td>
@@ -120,7 +117,7 @@ docker run -d \
 <td markdown="span">-e 'ServerIPv6'=''</td>
 <td markdown="span">Ipv6 (no usaremos, la dejamos en blanco)
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'DNS1'='8.8.8.8'</td>
 <td markdown="span">DNS para el formward
 </td>
@@ -128,16 +125,15 @@ docker run -d \
 <td markdown="span">-e 'DNS2'='8.8.4.4'</td>
 <td markdown="span">DNS alternativo para el forward
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'IPv6'='False'</td>
 <td markdown="span">Ipv6 (no usaremos, la dejamos en blanco)
 </td>
-</tr>
 <tr>
 <td markdown="span">-e 'WEBPASSWORD'='YOURPASSWORD'</td>
 <td markdown="span">Contraseña panel admin Pi-Hole
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-e 'DNSMASQ_LISTENING'='all'</td>
 <td markdown="span">Habilitamos DNSMASQ
 </td>
@@ -145,7 +141,7 @@ docker run -d \
 <td markdown="span">-v '/pihole/pihole/':'/etc/pihole/':'rw'</td>
 <td markdown="span">Mapeo de carpeta para guardar config
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">-v '/pihole/dnsmasq.d/':'/etc/dnsmasq.d/':'rw'</td>
 <td markdown="span">Mapeo de carpeta para guardar config
 </td>
@@ -153,7 +149,7 @@ docker run -d \
 <td markdown="span">--cap-add=NET_ADMIN</td>
 <td markdown="span">Parametro que necesita DNSMASQ
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">--dns 127.0.0.1</td>
 <td markdown="span">Ip interna
 </td>
@@ -161,7 +157,7 @@ docker run -d \
 <td markdown="span">--dns 1.1.1.1</td>
 <td markdown="span">DNS interno
 </td>
-<tr>
+<tr bgcolor="#F8F8F8">
 <td markdown="span">--restart=unless-stopped</td>
 <td markdown="span">Restart container unless it is stopped
 </td>
@@ -169,3 +165,5 @@ docker run -d \
 <td markdown="span">'pihole/pihole:latest'</td>
 <td markdown="span">Imagen del contenedor
 </td>
+<tbody>
+<table>
