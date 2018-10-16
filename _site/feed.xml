@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-14T22:39:00+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. Esta especialmente dedicado a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como hacer passthrough the una NIC a una VM en Unraid</title><link href="http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="Como hacer passthrough the una NIC a una VM en Unraid" /><published>2018-10-10T00:00:00+02:00</published><updated>2018-10-10T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/10/unraid-nic-passthrough.html">&lt;h1&gt;Como hacer passthrough the una NIC a una VM en Unraid&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-16T09:18:45+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. Esta especialmente dedicado a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como ejecutar pihole en docker</title><link href="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html" rel="alternate" type="text/html" title="Como ejecutar pihole en docker" /><published>2018-10-16T00:00:00+02:00</published><updated>2018-10-16T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/16/pihole-docker</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html">&lt;h1 id=&quot;que-es-pi-hole&quot;&gt;¿Que es PI-HOLE&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Pi-hole es un &lt;strong&gt;servidor dns&lt;/strong&gt; concebido para ayudarnos a bloquear publicidad, malware, mineria de monedas y sitios no deseados mientras navegamos.&lt;/p&gt;
+
+&lt;p&gt;Las &lt;strong&gt;ventajas&lt;/strong&gt; de tener a pihole son muchas, entre ellas, menor consumo de ancho (ahorrarás datos), mejora en la experiencia de navegación, rapidez de carga, etc…&lt;/p&gt;
+
+&lt;p&gt;Cuando tengamos Pi-hole funcionando podremos asignar la ip de este a nuestro router como DNS único. De este modo cuando hagamos una consulta con nuestro navegador, esta será filtrada por Pi-hole y este la bloqueará o la rediccionará a nuestro dns alternativo que configuremos desde el panel de administración.&lt;/p&gt;
+
+&lt;p&gt;Pi-hole Funciona en nuestra red interna pero &lt;strong&gt;podremos extender su capacidad si nos conectamos por VPN&lt;/strong&gt;, de este modo las consultas que hagamos pasarán por nuestro DNS.&lt;/p&gt;
+
+&lt;p&gt;Pi-hole &lt;strong&gt;no filtrará el 100% de publicidad o webs fraudulentas&lt;/strong&gt; y en algunas ocasiones desechará contenido que realmente queremos, para esto tendremos que acceder al panel de administración de Pi-hole y poner la web que queramos &lt;strong&gt;acceder en la lista de whitelist&lt;/strong&gt; o la que queramos &lt;strong&gt;bloquear en blacklist&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pi-hole se nutre de listados de webs realizado por la comunidad de usuarios.&lt;/p&gt;
+
+&lt;p&gt;En mi caso uso el listado de &lt;strong&gt;Block list project&lt;/strong&gt; que lo podrás encontrar en el siguiente &lt;a href=&quot;https://tspprs.com/&quot; title=&quot;Block list project&quot;&gt;enlace&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;ejecutando-pi-hole-por-primera-vez&quot;&gt;Ejecutando PI-HOLE por primera vez&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Para ejecutar este docker lanzamos desde un &lt;strong&gt;cmd si estamos en windows&lt;/strong&gt;, o un &lt;strong&gt;terminal si estamos en mac o linux&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d \
+--name='pihole' \
+--net='br0' \
+--ip='192.168.1.22' \
+-e TZ=&quot;Europe/Madrid&quot; \
+-e HOST_OS=&quot;Unraid&quot; \
+-e 'TCP_PORT_53'='5355' \
+-e 'UDP_PORT_53'='5355' \
+-e 'TCP_PORT_80'='8055' \
+-e 'PUID'='99' \
+-e 'PGID'='100' \
+-e 'ServerIP'='192.168.1.22' \
+-e 'ServerIPv6'='' \
+-e 'DNS1'='8.8.8.8' \
+-e 'DNS2'='8.8.4.4' \
+-e 'IPv6'='False' \
+-e 'WEBPASSWORD'='YOURPASSWORD' \
+-e 'DNSMASQ_LISTENING'='all' \
+-v '/mnt/user/appdata/pihole/pihole/':'/etc/pihole/':'rw' \
+-v '/mnt/user/appdata/pihole/dnsmasq.d/':'/etc/dnsmasq.d/':'rw' \
+--cap-add=NET_ADMIN \
+--dns 127.0.0.1 \
+--dns 1.1.1.1 \
+--restart=unless-stopped \
+'pihole/pihole:latest' \
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;nos-conectamos-por-web-a-nuestra-instancia-de-pi-hole&quot;&gt;Nos conectamos por web a nuestra instancia de Pi-HOLE&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Este es el aspecto que tendrá nuestra web si se ha cargado bien.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/pihole1.png&quot; alt=&quot;pihole1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Si seguimos el link o vamos directamente a la url del panel &lt;strong&gt;/admin&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/pihole2.png&quot; alt=&quot;pihole2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pinchamos en Login y metemos el password que hemos puesto en la config del contenedor&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/pihole3.png&quot; alt=&quot;pihole3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Por defecto pihole viene con una blocklist extensa, pero si queremos mas, podremos añadir la lista que queramos en &lt;strong&gt;settings &amp;gt; blocklists&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/pihole4.png&quot; alt=&quot;pihole4&quot; /&gt;&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">¿Que es PI-HOLE</summary></entry><entry><title type="html">Como hacer passthrough the una NIC a una VM en Unraid</title><link href="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html" rel="alternate" type="text/html" title="Como hacer passthrough the una NIC a una VM en Unraid" /><published>2018-10-12T00:00:00+02:00</published><updated>2018-10-12T00:00:00+02:00</updated><id>http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough</id><content type="html" xml:base="http://localhost:4000/blog/unraid/2018/10/12/unraid-nic-passthrough.html">&lt;h1&gt;Como hacer passthrough the una NIC a una VM en Unraid&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h5&gt;&lt;em&gt;Acrónimos: VM (máquina virtual), NIC (tarjeta de red)&lt;/em&gt;&lt;/h5&gt;
@@ -69,7 +135,7 @@
 
 &lt;p&gt;Con esto a la hora de crear una VM ya podremos seleccionar del listado la NIC para asignarla directamente.&lt;/p&gt;
 
-&lt;p&gt;Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como hacer passthrough the una NIC a una VM en Unraid</summary></entry><entry><title type="html">Instalar y usar Elasticsearch en nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="Instalar y usar Elasticsearch en nextcloud" /><published>2018-10-08T00:00:00+02:00</published><updated>2018-10-08T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/08/elasticsearch-install-nextcloud.html">&lt;h1&gt;Instalación de Elasticsearch en Nextcloud&lt;/h1&gt;
+&lt;p&gt;Este mismo proceso se puede usar para hacer passthrough a otros componentes y periféricos, como GPUs, hubs usb, discos duros etc…&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como hacer passthrough the una NIC a una VM en Unraid</summary></entry><entry><title type="html">Instalar y usar Elasticsearch en nextcloud</title><link href="http://localhost:4000/blog/nextcloud/2018/10/09/elasticsearch-install-nextcloud.html" rel="alternate" type="text/html" title="Instalar y usar Elasticsearch en nextcloud" /><published>2018-10-09T00:00:00+02:00</published><updated>2018-10-09T00:00:00+02:00</updated><id>http://localhost:4000/blog/nextcloud/2018/10/09/elasticsearch-install-nextcloud</id><content type="html" xml:base="http://localhost:4000/blog/nextcloud/2018/10/09/elasticsearch-install-nextcloud.html">&lt;h1&gt;Instalación de Elasticsearch en Nextcloud&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h5&gt;Probado en ubuntu 16.04&lt;/h5&gt;

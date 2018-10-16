@@ -5,6 +5,7 @@ categories: docker
 ---
 
 # ¿Que es PI-HOLE
+* * *
 
 Pi-hole es un **servidor dns** concebido para ayudarnos a bloquear publicidad, malware, mineria de monedas y sitios no deseados mientras navegamos.
 
@@ -21,6 +22,7 @@ Pi-hole se nutre de listados de webs realizado por la comunidad de usuarios.
 En mi caso uso el listado de **Block list project** que lo podrás encontrar en el siguiente [enlace](https://tspprs.com/ "Block list project").
 
 # Ejecutando PI-HOLE por primera vez
+* * *
 
 Para ejecutar este docker lanzamos desde un **cmd si estamos en windows**, o un **terminal si estamos en mac o linux**.
 
@@ -51,7 +53,10 @@ docker run -d \
 --restart=unless-stopped \
 'pihole/pihole:latest' \
 ```
+{% comment %}
 ## Explicado:
+* * *
+
 
 <table>
 <colgroup>
@@ -167,3 +172,24 @@ docker run -d \
 </td>
 <tbody>
 <table>
+<br>
+{% endcomment %}
+
+# Nos conectamos por web a nuestra instancia de Pi-HOLE
+* * *
+
+Este es el aspecto que tendrá nuestra web si se ha cargado bien.
+
+![pihole1](/blog/assets/img/pihole1.png)
+
+Si seguimos el link o vamos directamente a la url del panel **/admin**
+
+![pihole2](/blog/assets/img/pihole2.png)
+
+Pinchamos en Login y metemos el password que hemos puesto en la config del contenedor
+
+![pihole3](/blog/assets/img/pihole3.png)
+
+Por defecto pihole viene con una blocklist extensa, pero si queremos mas, podremos añadir la lista que queramos en **settings > blocklists**
+
+![pihole4](/blog/assets/img/pihole4.png)
