@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <h1>Inicio</h1>
 <div class="home">
   {%- if page.title -%}
