@@ -4,7 +4,79 @@ title:  "Instalar Pihole y Pivpn en Raspberry Pi"
 categories: raspberry
 ---
 
-test
+## Requisitos:
+
+* Raspberry pi (Cualquier version)
+* microsd (2gb+)
+* Cable Ethernet
+* Cable microusb +
+
+# Preparamos la SD y instalamos Raspbian.
+* * *
+
+Insertamos la SD. Si no tenemos lector de tarjetas sd en nuestro pc, nos valemos de cualquier adaptador de sd a usb.
+
+![pihole1](/blog/assets/img/piholerasp1.png)
+
+Sacamos un CMD (Windows + R) y ejecutamos Diskpart
+
+Seguimos las siguientes instrucciones:
+
+![pihole2](/blog/assets/img/piholerasp2.png)
+
+Descargamos Raspbian stretch lite (sin escritorio) desde la página oficial de raspbian [AQUI](https://www.raspberrypi.org/downloads/raspbian/) y lo descomprimimos.
+
+![pihole3](/blog/assets/img/piholerasp3.png)
+
+Abrimos el programa Win32 Disk Imager y seleccionamos nuestra imagen. Nos lo descargamos gratuitamente desde [AQUI](https://sourceforge.net/projects/win32diskimager/)
+![pihole4](/blog/assets/img/piholerasp4.png)
+
+Le damos a write para escribirla en la SD.
+
+![pihole5](/blog/assets/img/piholerasp5.png)
+
+Ya tenemos nuestra SD preparada!
+
+![pihole6](/blog/assets/img/piholerasp6.png)
+
+**Importante**: Si queremos conectarnos a nuestra raspberry por ssh sin necesidad de un monitor, previamente tendremos que crear un archivo vacio sin extensión que se llame "usb" en la raiz de nuestra SD después de haberle instalado Raspbian, así:
+
+![pihole7](/blog/assets/img/piholerasp7.png)
+
+# Instalamos Pihole en nuestro Raspbian.
+* * *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Originalmente Escrito por Valný  Ver Mensaje

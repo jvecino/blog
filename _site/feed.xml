@@ -1,4 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-18T13:00:31+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como ejecutar pihole en docker</title><link href="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html" rel="alternate" type="text/html" title="Como ejecutar pihole en docker" /><published>2018-10-16T00:00:00+02:00</published><updated>2018-10-16T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/16/pihole-docker</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html">&lt;h1 id=&quot;que-es-pi-hole&quot;&gt;¿Que es PI-HOLE&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-23T10:01:20+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Instalar Pihole y Pivpn en Raspberry Pi</title><link href="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html" rel="alternate" type="text/html" title="Instalar Pihole y Pivpn en Raspberry Pi" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T00:00:00+02:00</updated><id>http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn</id><content type="html" xml:base="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html">&lt;h2 id=&quot;requisitos&quot;&gt;Requisitos:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Raspberry pi (Cualquier version)&lt;/li&gt;
+  &lt;li&gt;microsd (2gb+)&lt;/li&gt;
+  &lt;li&gt;Cable Ethernet&lt;/li&gt;
+  &lt;li&gt;Cable microusb +&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;preparamos-la-sd-y-instalamos-raspbian&quot;&gt;Preparamos la SD y instalamos Raspbian.&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Insertamos la SD. Si no tenemos lector de tarjetas sd en nuestro pc, nos valemos de cualquier adaptador de sd a usb.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp1.png&quot; alt=&quot;pihole1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacamos un CMD (Windows + R) y ejecutamos Diskpart&lt;/p&gt;
+
+&lt;p&gt;Seguimos las siguientes instrucciones:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp2.png&quot; alt=&quot;pihole2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Descargamos Raspbian stretch lite (sin escritorio) desde la página oficial de raspbian &lt;a href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot;&gt;AQUI&lt;/a&gt; y lo descomprimimos.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp3.png&quot; alt=&quot;pihole3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Abrimos el programa Win32 Disk Imager y seleccionamos nuestra imagen. Nos lo descargamos gratuitamente desde &lt;a href=&quot;https://sourceforge.net/projects/win32diskimager/&quot;&gt;AQUI&lt;/a&gt;
+&lt;img src=&quot;/blog/assets/img/piholerasp4.png&quot; alt=&quot;pihole4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le damos a write para escribirla en la SD.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp5.png&quot; alt=&quot;pihole5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ya tenemos nuestra SD preparada!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp6.png&quot; alt=&quot;pihole6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Importante&lt;/strong&gt;: Si queremos conectarnos a nuestra raspberry por ssh sin necesidad de un monitor, previamente tendremos que crear un archivo vacio sin extensión que se llame “usb” en la raiz de nuestra SD después de haberle instalado Raspbian, así:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp7.png&quot; alt=&quot;pihole7&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;instalamos-pihole-en-nuestro-raspbian&quot;&gt;Instalamos Pihole en nuestro Raspbian.&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Originalmente Escrito por Valný  Ver Mensaje
+Ya que esto se ha convertido en una quasi plataforma comparto por aquí un script para reconectar la red cuando se cae por si lo quieres añadir al OP. En mi caso la Raspberry arranca mucho más rápido que mi router y como detecta que no se puede conectar pues así se queda, como la tengo en modo headless lo único que puedo hacer es reiniciarla a la fuerza una vez el router ya está funcionando para que se conecte y empiece a funcionar bien.&lt;/p&gt;
+
+&lt;p&gt;Creamos un script vacio con nano dentro de /usr/local/bin/ que se llamará wifi_check.sh:
+Código:
+sudo nano /usr/local/bin/http://wifi_check.shEl contenido del script es el siguiente:
+Código:
+#!/bin/bash&lt;/p&gt;
+
+&lt;p&gt;SERVER=8.8.8.8&lt;/p&gt;
+
+&lt;p&gt;ping -c2 ${SERVER} &amp;gt; /dev/null&lt;/p&gt;
+
+&lt;p&gt;if [ $? != 0 ]
+then
+    sudo ifconfig wlan0 down
+    sudo ifconfig wlan0 up
+fi
+Resumiendo manda dos pings al DNS de Google (8.8.8.8) si el resultado es distinto a 0 significa que no ha podido contactar y entonces reinicia la interfaz inalámbrica (si lo queréis para una Raspberry conectada por cable cambiar wlan0 por eth0)&lt;/p&gt;
+
+&lt;p&gt;Guardamos con CTRL+O y salimos con CTRL+X.&lt;/p&gt;
+
+&lt;p&gt;Damos permisos de ejecución al script:
+Código:
+sudo chmod +x /usr/local/bin/http://wifi_check.shAhora editaremos cron para que el script se ejecute automáticamente cada 5 minutos:
+Código:
+sudo nano /etc/crontab
+Y añadimos al final del archivo la siguiente línea:&lt;/p&gt;
+
+&lt;p&gt;Y ya está, si queréis probar que funciona podéis parar la red inalámbrica con:&lt;/p&gt;
+
+&lt;p&gt;Esto desconectará la sesión SSH (y si lo tenéis configurado como único DNS en el router también desconectará internet en general), esperad 5 minutos y tratad de conectaros a la Raspberry de nuevo, si funciona es que lo habéis hecho bien&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Requisitos:</summary></entry><entry><title type="html">Duckdns en Docker</title><link href="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html" rel="alternate" type="text/html" title="Duckdns en Docker" /><published>2018-10-19T00:00:00+02:00</published><updated>2018-10-19T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html">&lt;h1 id=&quot;ducksdns-en-docker&quot;&gt;Ducksdns en Docker&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;El DNS dinámico (DDNS) es un servicio que permite la actualización en tiempo real de la información sobre nombres de dominio situada en un servidor de nombres. El uso más común que se le da es permitir la asignación de un nombre de dominio de Internet a un dispositivo con dirección IP variable (dinámica). Esto permite conectarse con la máquina en cuestión sin necesidad de tener conocimiento de que dirección IP posee en ese momento.&lt;/p&gt;
+
+  &lt;p&gt;El DNS dinámico hace posible utilizar un software de servidor en un dispositivo con dirección IP dinámica (como la suelen facilitar muchos ISP) para, por ejemplo, alojar un sitio web en la PC de nuestra casa, sin necesidad de contratar un hosting de terceros.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;creación-del-subdominio&quot;&gt;Creación del subdominio&lt;/h2&gt;
+
+&lt;p&gt;Entramos a la web de duckdns por este &lt;a href=&quot;https://www.duckdns.org&quot; title=&quot;duckdns&quot;&gt;enlace&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/duckdns1.png&quot; alt=&quot;duckdns1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Elegimos el subdominio que queramos y le damos a add domain y nos apuntamos el token para mas adelante.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/duckdns2.png&quot; alt=&quot;duckdns2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;creación-del-contenedor-de-docker&quot;&gt;Creación del contenedor de docker&lt;/h2&gt;
+
+&lt;p&gt;Creamos el contenemos de duckdns para que tengamos siempre nuestro subdominio actualizado con nuestra ip actual, con los datos proporcionados al crear el subdominio en duckdns.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -d --name='duckdns' \
+--net='host' \
+-e TZ=&quot;Europe/Paris&quot; \
+-e 'SUBDOMAINS'='NUESTRO SUBDOMINIO DE DUCKDNS' \
+-e 'TOKEN'='NUESTRO TOKEN' \
+-e 'PUID'='ID USUARIO' \
+-e 'PGID'='ID GRUPO' \
+--memory=1024m \
+'linuxserver/duckdns'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Este contenedor tiene habilitado un cron que actualiza la ip, si hace falta, cada 15 minutos.&lt;/p&gt;
+
+&lt;p&gt;Si tenemos ip dinámica y necesitamos dar una dirección estática para algún servicio como nextcloud ya podremos usar nuestro ddns.&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Ducksdns en Docker</summary></entry><entry><title type="html">Como ejecutar pihole en docker</title><link href="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html" rel="alternate" type="text/html" title="Como ejecutar pihole en docker" /><published>2018-10-16T00:00:00+02:00</published><updated>2018-10-16T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/16/pihole-docker</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/16/pihole-docker.html">&lt;h1 id=&quot;que-es-pi-hole&quot;&gt;¿Que es PI-HOLE&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;p&gt;Pi-hole es un &lt;strong&gt;servidor dns&lt;/strong&gt; concebido para ayudarnos a bloquear publicidad, malware, mineria de monedas y sitios no deseados mientras navegamos.&lt;/p&gt;
