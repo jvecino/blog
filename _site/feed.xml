@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-30T09:31:43+01:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como configurar rclone por primera vez</title><link href="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html" rel="alternate" type="text/html" title="Como configurar rclone por primera vez" /><published>2018-10-30T00:00:00+01:00</published><updated>2018-10-30T00:00:00+01:00</updated><id>http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez</id><content type="html" xml:base="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html">&lt;h1 id=&quot;como-configurar-rclone-por-primera-vez&quot;&gt;Como configurar rclone por primera vez&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-11-03T12:29:31+01:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como configurar rclone por primera vez</title><link href="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html" rel="alternate" type="text/html" title="Como configurar rclone por primera vez" /><published>2018-10-30T00:00:00+01:00</published><updated>2018-10-30T00:00:00+01:00</updated><id>http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez</id><content type="html" xml:base="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html">&lt;h1 id=&quot;como-configurar-rclone-por-primera-vez&quot;&gt;Como configurar rclone por primera vez&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;instalación-rclone&quot;&gt;Instalación rclone&lt;/h2&gt;
@@ -195,7 +195,49 @@ c) Copy remote
 s) Set configuration password
 q) Quit config
 e/n/d/r/c/s/q&amp;gt; q
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como configurar rclone por primera vez</summary></entry><entry><title type="html">Duckdns en Docker</title><link href="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html" rel="alternate" type="text/html" title="Duckdns en Docker" /><published>2018-10-19T00:00:00+02:00</published><updated>2018-10-19T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html">&lt;h1 id=&quot;ducksdns-en-docker&quot;&gt;Ducksdns en Docker&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como configurar rclone por primera vez</summary></entry><entry><title type="html">Instalar Pihole y Pivpn en Raspberry Pi</title><link href="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html" rel="alternate" type="text/html" title="Instalar Pihole y Pivpn en Raspberry Pi" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T00:00:00+02:00</updated><id>http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn</id><content type="html" xml:base="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html">&lt;h2 id=&quot;requisitos&quot;&gt;Requisitos:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Raspberry pi (Cualquier version)&lt;/li&gt;
+  &lt;li&gt;microsd (2gb+)&lt;/li&gt;
+  &lt;li&gt;Cable Ethernet&lt;/li&gt;
+  &lt;li&gt;Cable microusb +&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;preparamos-la-sd-y-instalamos-raspbian&quot;&gt;Preparamos la SD y instalamos Raspbian.&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Insertamos la SD. Si no tenemos lector de tarjetas sd en nuestro pc, nos valemos de cualquier adaptador de sd a usb.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp1.png&quot; alt=&quot;pihole1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sacamos un CMD (Windows + R) y ejecutamos Diskpart&lt;/p&gt;
+
+&lt;p&gt;Seguimos las siguientes instrucciones:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp2.png&quot; alt=&quot;pihole2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Descargamos Raspbian stretch lite (sin escritorio) desde la página oficial de raspbian &lt;a href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot;&gt;AQUI&lt;/a&gt; y lo descomprimimos.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp3.png&quot; alt=&quot;pihole3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Abrimos el programa Win32 Disk Imager y seleccionamos nuestra imagen. Nos lo descargamos gratuitamente desde &lt;a href=&quot;https://sourceforge.net/projects/win32diskimager/&quot;&gt;AQUI&lt;/a&gt;
+&lt;img src=&quot;/blog/assets/img/piholerasp4.png&quot; alt=&quot;pihole4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le damos a write para escribirla en la SD.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp5.png&quot; alt=&quot;pihole5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ya tenemos nuestra SD preparada!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp6.png&quot; alt=&quot;pihole6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Importante&lt;/strong&gt;: Si queremos conectarnos a nuestra raspberry por ssh sin necesidad de un monitor, previamente tendremos que crear un archivo vacio sin extensión que se llame “usb” en la raiz de nuestra SD después de haberle instalado Raspbian, así:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp7.png&quot; alt=&quot;pihole7&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;instalamos-pihole-en-nuestro-raspbian&quot;&gt;Instalamos Pihole en nuestro Raspbian.&lt;/h1&gt;
+&lt;hr /&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Requisitos:</summary></entry><entry><title type="html">Duckdns en Docker</title><link href="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html" rel="alternate" type="text/html" title="Duckdns en Docker" /><published>2018-10-19T00:00:00+02:00</published><updated>2018-10-19T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html">&lt;h1 id=&quot;ducksdns-en-docker&quot;&gt;Ducksdns en Docker&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;blockquote&gt;
