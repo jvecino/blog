@@ -1,79 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-23T10:01:20+02:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Instalar Pihole y Pivpn en Raspberry Pi</title><link href="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html" rel="alternate" type="text/html" title="Instalar Pihole y Pivpn en Raspberry Pi" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T00:00:00+02:00</updated><id>http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn</id><content type="html" xml:base="http://localhost:4000/blog/raspberry/2018/10/23/install-pihole-and-pivpn.html">&lt;h2 id=&quot;requisitos&quot;&gt;Requisitos:&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Raspberry pi (Cualquier version)&lt;/li&gt;
-  &lt;li&gt;microsd (2gb+)&lt;/li&gt;
-  &lt;li&gt;Cable Ethernet&lt;/li&gt;
-  &lt;li&gt;Cable microusb +&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;preparamos-la-sd-y-instalamos-raspbian&quot;&gt;Preparamos la SD y instalamos Raspbian.&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2018-10-30T09:31:43+01:00</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Joao Vecino tech blog</title><subtitle>Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</subtitle><author><name>Joao Carlos Correia Vecino Vieira</name></author><entry><title type="html">Como configurar rclone por primera vez</title><link href="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html" rel="alternate" type="text/html" title="Como configurar rclone por primera vez" /><published>2018-10-30T00:00:00+01:00</published><updated>2018-10-30T00:00:00+01:00</updated><id>http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez</id><content type="html" xml:base="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html">&lt;h1 id=&quot;como-configurar-rclone-por-primera-vez&quot;&gt;Como configurar rclone por primera vez&lt;/h1&gt;
 &lt;hr /&gt;
 
-&lt;p&gt;Insertamos la SD. Si no tenemos lector de tarjetas sd en nuestro pc, nos valemos de cualquier adaptador de sd a usb.&lt;/p&gt;
+&lt;h2 id=&quot;instalación-rclone&quot;&gt;Instalación rclone&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp1.png&quot; alt=&quot;pihole1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Para instalar rclone en linux/macOS/BSD:&lt;/p&gt;
 
-&lt;p&gt;Sacamos un CMD (Windows + R) y ejecutamos Diskpart&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://rclone.org/install.sh | sudo bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Seguimos las siguientes instrucciones:&lt;/p&gt;
+&lt;p&gt;Para instalar la beta:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://rclone.org/install.sh | sudo bash -s beta
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp2.png&quot; alt=&quot;pihole2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Para los demás sistemas operativos nos vamos al mirror en github:&lt;/p&gt;
 
-&lt;p&gt;Descargamos Raspbian stretch lite (sin escritorio) desde la página oficial de raspbian &lt;a href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot;&gt;AQUI&lt;/a&gt; y lo descomprimimos.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/ncw/rclone/releases/tag/v1.44
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp3.png&quot; alt=&quot;pihole3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;log:&lt;/p&gt;
 
-&lt;p&gt;Abrimos el programa Win32 Disk Imager y seleccionamos nuestra imagen. Nos lo descargamos gratuitamente desde &lt;a href=&quot;https://sourceforge.net/projects/win32diskimager/&quot;&gt;AQUI&lt;/a&gt;
-&lt;img src=&quot;/blog/assets/img/piholerasp4.png&quot; alt=&quot;pihole4&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-```&quot;&gt;user@ubuntu:~$ sudo curl https://rclone.org/install.sh | sudo bash
+[sudo] password for user:
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4178  100  4178    0     0  10527      0 --:--:-- --:--:-- --:--:-- 10523
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    13  100    13    0     0     34      0 --:--:-- --:--:-- --:--:--    34
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 8481k  100 8481k    0     0  11.7M      0 --:--:-- --:--:-- --:--:-- 11.7M
+Archive:  rclone-current-linux-amd64.zip
+   creating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/rclone.1  [text]                                                                                                                                                              
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/rclone  [binary]
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/README.txt  [text                                                                                                                                                             ]
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/README.html  [tex                                                                                                                                                             t]
+ extracting: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/git-log.txt  [emp                                                                                                                                                             ty]
+Purging old database entries in /usr/share/man...
+Processing manual pages under /usr/share/man...
+Purging old database entries in /usr/share/man/fr...
+Processing manual pages under /usr/share/man/fr...
+Purging old database entries in /usr/share/man/sv...
+Processing manual pages under /usr/share/man/sv...
+Purging old database entries in /usr/share/man/fi...
+Processing manual pages under /usr/share/man/fi...
+Purging old database entries in /usr/share/man/pt_BR...
+Processing manual pages under /usr/share/man/pt_BR...
+Purging old database entries in /usr/share/man/cs...
+Processing manual pages under /usr/share/man/cs...
+Purging old database entries in /usr/share/man/id...
+Processing manual pages under /usr/share/man/id...
+Purging old database entries in /usr/share/man/zh_TW...
+Processing manual pages under /usr/share/man/zh_TW...
+Purging old database entries in /usr/share/man/da...
+Processing manual pages under /usr/share/man/da...
+Purging old database entries in /usr/share/man/it...
+Processing manual pages under /usr/share/man/it...
+Purging old database entries in /usr/share/man/zh_CN...
+Processing manual pages under /usr/share/man/zh_CN...
+Purging old database entries in /usr/share/man/hu...
+Processing manual pages under /usr/share/man/hu...
+Purging old database entries in /usr/share/man/ko...
+Processing manual pages under /usr/share/man/ko...
+Purging old database entries in /usr/share/man/ru...
+Processing manual pages under /usr/share/man/ru...
+Purging old database entries in /usr/share/man/de...
+Processing manual pages under /usr/share/man/de...
+Purging old database entries in /usr/share/man/es...
+Processing manual pages under /usr/share/man/es...
+Purging old database entries in /usr/share/man/nl...
+Processing manual pages under /usr/share/man/nl...
+Purging old database entries in /usr/share/man/sl...
+Processing manual pages under /usr/share/man/sl...
+Purging old database entries in /usr/share/man/tr...
+Processing manual pages under /usr/share/man/tr...
+Purging old database entries in /usr/share/man/pt...
+Processing manual pages under /usr/share/man/pt...
+Purging old database entries in /usr/share/man/pl...
+Processing manual pages under /usr/share/man/pl...
+Purging old database entries in /usr/share/man/ja...
+Processing manual pages under /usr/share/man/ja...
+Processing manual pages under /usr/local/man...
+Updating index cache for path `/usr/local/man/man1'. Wait...done.
+Checking for stray cats under /usr/local/man...
+Checking for stray cats under /var/cache/man/oldlocal...
+1 man subdirectory contained newer manual pages.
+1 manual page was added.
+0 stray cats were added.
+0 old database entries were purged.
 
-&lt;p&gt;Le damos a write para escribirla en la SD.&lt;/p&gt;
+rclone v1.44 has successfully installed.
+Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp5.png&quot; alt=&quot;pihole5&quot; /&gt;&lt;/p&gt;
+user@ubuntu:~$
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Ya tenemos nuestra SD preparada!&lt;/p&gt;
+&lt;h2 id=&quot;configuración-de-nuestra-primera-cuenta&quot;&gt;Configuración de nuestra primera cuenta&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user@ubuntu:~$ rclone config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp6.png&quot; alt=&quot;pihole6&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user@ubuntu:~$ rclone config
+2018/10/30 09:25:59 NOTICE: Config file &quot;/home/user/.config/rclone/rclone.conf&quot; not found - using defaults
+No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&amp;gt; n
+name&amp;gt; miconexion
+Type of storage to configure.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+12 / Google Drive
+   \ &quot;drive&quot;
 
-&lt;p&gt;&lt;strong&gt;Importante&lt;/strong&gt;: Si queremos conectarnos a nuestra raspberry por ssh sin necesidad de un monitor, previamente tendremos que crear un archivo vacio sin extensión que se llame “usb” en la raiz de nuestra SD después de haberle instalado Raspbian, así:&lt;/p&gt;
+Storage&amp;gt; 12
+** See help for drive backend at: https://rclone.org/drive/ **
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/img/piholerasp7.png&quot; alt=&quot;pihole7&quot; /&gt;&lt;/p&gt;
+Google Application Client Id
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_id&amp;gt;
+Google Application Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_secret&amp;gt;
+Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ &quot;drive&quot;
+ 2 / Read-only access to file metadata and file contents.
+   \ &quot;drive.readonly&quot;
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ &quot;drive.file&quot;
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ &quot;drive.appfolder&quot;
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ &quot;drive.metadata.readonly&quot;
+scope&amp;gt; 1
+ID of the root folder
+Leave blank normally.
+Fill in to access &quot;Computers&quot; folders. (see docs).
+Enter a string value. Press Enter for the default (&quot;&quot;).
+root_folder_id&amp;gt;
+Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+service_account_file&amp;gt;
+Edit advanced config? (y/n)
+y) Yes
+n) No
+y/n&amp;gt; n
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine or Y didn't work
+y) Yes
+n) No
+y/n&amp;gt; n
+If your browser doesn't open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;amp;
+Log in and authorize rclone for access
+Enter verification code&amp;gt; 4/hgC5DFGDF4Gp7RKGrV98L_iZPwPblM
+Configure this as a team drive?
+y) Yes
+n) No
+y/n&amp;gt; n
+--------------------
+[miconexion]
+type = drive
+scope = drive
+token = {&quot;access_token&quot;:&quot;ya29.GltGBv5vYJ_Vx8Y80cdfg5GF6rAt1Yj23FzrjUw7ciis5Ptl7z99KVXvtXfxLwE0jduhPh-j&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;refresh_token&quot;:&quot;1/1bscXCzKgh59P5CjnvhHCnExjq-mxFfhw06uM_VghqQPoCWNQflb&quot;,&quot;expiry&quot;:&quot;2018-10-30T10:26:48.927281425+01:00&quot;}
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d&amp;gt; y
+Current remotes:
 
-&lt;h1 id=&quot;instalamos-pihole-en-nuestro-raspbian&quot;&gt;Instalamos Pihole en nuestro Raspbian.&lt;/h1&gt;
-&lt;hr /&gt;
+Name                 Type
+====                 ====
+miconexion           drive
 
-&lt;p&gt;Originalmente Escrito por Valný  Ver Mensaje
-Ya que esto se ha convertido en una quasi plataforma comparto por aquí un script para reconectar la red cuando se cae por si lo quieres añadir al OP. En mi caso la Raspberry arranca mucho más rápido que mi router y como detecta que no se puede conectar pues así se queda, como la tengo en modo headless lo único que puedo hacer es reiniciarla a la fuerza una vez el router ya está funcionando para que se conecte y empiece a funcionar bien.&lt;/p&gt;
-
-&lt;p&gt;Creamos un script vacio con nano dentro de /usr/local/bin/ que se llamará wifi_check.sh:
-Código:
-sudo nano /usr/local/bin/http://wifi_check.shEl contenido del script es el siguiente:
-Código:
-#!/bin/bash&lt;/p&gt;
-
-&lt;p&gt;SERVER=8.8.8.8&lt;/p&gt;
-
-&lt;p&gt;ping -c2 ${SERVER} &amp;gt; /dev/null&lt;/p&gt;
-
-&lt;p&gt;if [ $? != 0 ]
-then
-    sudo ifconfig wlan0 down
-    sudo ifconfig wlan0 up
-fi
-Resumiendo manda dos pings al DNS de Google (8.8.8.8) si el resultado es distinto a 0 significa que no ha podido contactar y entonces reinicia la interfaz inalámbrica (si lo queréis para una Raspberry conectada por cable cambiar wlan0 por eth0)&lt;/p&gt;
-
-&lt;p&gt;Guardamos con CTRL+O y salimos con CTRL+X.&lt;/p&gt;
-
-&lt;p&gt;Damos permisos de ejecución al script:
-Código:
-sudo chmod +x /usr/local/bin/http://wifi_check.shAhora editaremos cron para que el script se ejecute automáticamente cada 5 minutos:
-Código:
-sudo nano /etc/crontab
-Y añadimos al final del archivo la siguiente línea:&lt;/p&gt;
-
-&lt;p&gt;Y ya está, si queréis probar que funciona podéis parar la red inalámbrica con:&lt;/p&gt;
-
-&lt;p&gt;Esto desconectará la sesión SSH (y si lo tenéis configurado como único DNS en el router también desconectará internet en general), esperad 5 minutos y tratad de conectaros a la Raspberry de nuevo, si funciona es que lo habéis hecho bien&lt;/p&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Requisitos:</summary></entry><entry><title type="html">Duckdns en Docker</title><link href="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html" rel="alternate" type="text/html" title="Duckdns en Docker" /><published>2018-10-19T00:00:00+02:00</published><updated>2018-10-19T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html">&lt;h1 id=&quot;ducksdns-en-docker&quot;&gt;Ducksdns en Docker&lt;/h1&gt;
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&amp;gt; q
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Joao Carlos Correia Vecino Vieira</name></author><summary type="html">Como configurar rclone por primera vez</summary></entry><entry><title type="html">Duckdns en Docker</title><link href="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html" rel="alternate" type="text/html" title="Duckdns en Docker" /><published>2018-10-19T00:00:00+02:00</published><updated>2018-10-19T00:00:00+02:00</updated><id>http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns</id><content type="html" xml:base="http://localhost:4000/blog/docker/2018/10/19/Uso-de-duckdns.html">&lt;h1 id=&quot;ducksdns-en-docker&quot;&gt;Ducksdns en Docker&lt;/h1&gt;
 &lt;hr /&gt;
 
 &lt;blockquote&gt;

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Como configurar rclone por primera vez | Joao Vecino tech blog</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Como configurar rclone por primera vez" />
+<meta name="author" content="Joao Carlos Correia Vecino Vieira" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Como configurar rclone por primera vez" />
+<meta property="og:description" content="Como configurar rclone por primera vez" />
+<link rel="canonical" href="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html" />
+<meta property="og:url" content="http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html" />
+<meta property="og:site_name" content="Joao Vecino tech blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-30T00:00:00+01:00" />
+<script type="application/ld+json">
+{"headline":"Como configurar rclone por primera vez","dateModified":"2018-10-30T00:00:00+01:00","datePublished":"2018-10-30T00:00:00+01:00","url":"http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/rclone/2018/10/30/Configurar-rclone-por-primera-vez.html"},"author":{"@type":"Person","name":"Joao Carlos Correia Vecino Vieira"},"description":"Como configurar rclone por primera vez","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+      <link rel="stylesheet" href="/blog/assets/css/style.css?v=">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Joao Vecino tech blog</h1>
+      <h2 class="project-tagline">Este blog nace de la necesidad personal de centralizar los conocimientos adquiridos de homelab, self hosting, nuevas técnologias, etc. No esta pensado para ser una fuente de tutoriales paso a paso sino más bien una serie de chuletas o cheatsheets rápidas que voy anotando por si algún día las necesito o a alguien le sean de ayuda. Lo dedico especialmente a todas aquellas personas que se esfuerzan en ser autodidáctas porque les encanta!</h2>
+      
+      
+    
+         <a href="/blog/" class="btn">Inicio</a>
+      
+	  
+       <a href="/blog/nextcloud" class="btn">Nextcloud</a>
+       <a href="/blog/unraid" class="btn">Unraid</a>
+       <a href="/blog/docker" class="btn">Docker</a>
+       <a href="/blog/raspberry" class="btn">Raspberry</a>
+       <a href="/blog/rclone" class="btn">Rclone</a>
+    
+    </section>
+
+    <section class="main-content">
+      <h1 id="como-configurar-rclone-por-primera-vez">Como configurar rclone por primera vez</h1>
+<hr />
+
+<h2 id="instalación-rclone">Instalación rclone</h2>
+
+<p>Para instalar rclone en linux/macOS/BSD:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://rclone.org/install.sh | sudo bash
+</code></pre></div></div>
+
+<p>Para instalar la beta:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://rclone.org/install.sh | sudo bash -s beta
+</code></pre></div></div>
+
+<p>Para los demás sistemas operativos nos vamos al mirror en github:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/ncw/rclone/releases/tag/v1.44
+</code></pre></div></div>
+
+<p>log:</p>
+
+<pre><code class="language-```">user@ubuntu:~$ sudo curl https://rclone.org/install.sh | sudo bash
+[sudo] password for user:
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4178  100  4178    0     0  10527      0 --:--:-- --:--:-- --:--:-- 10523
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    13  100    13    0     0     34      0 --:--:-- --:--:-- --:--:--    34
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 8481k  100 8481k    0     0  11.7M      0 --:--:-- --:--:-- --:--:-- 11.7M
+Archive:  rclone-current-linux-amd64.zip
+   creating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/rclone.1  [text]                                                                                                                                                              
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/rclone  [binary]
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/README.txt  [text                                                                                                                                                             ]
+  inflating: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/README.html  [tex                                                                                                                                                             t]
+ extracting: tmp_unzip_dir_for_rclone/rclone-v1.44-linux-amd64/git-log.txt  [emp                                                                                                                                                             ty]
+Purging old database entries in /usr/share/man...
+Processing manual pages under /usr/share/man...
+Purging old database entries in /usr/share/man/fr...
+Processing manual pages under /usr/share/man/fr...
+Purging old database entries in /usr/share/man/sv...
+Processing manual pages under /usr/share/man/sv...
+Purging old database entries in /usr/share/man/fi...
+Processing manual pages under /usr/share/man/fi...
+Purging old database entries in /usr/share/man/pt_BR...
+Processing manual pages under /usr/share/man/pt_BR...
+Purging old database entries in /usr/share/man/cs...
+Processing manual pages under /usr/share/man/cs...
+Purging old database entries in /usr/share/man/id...
+Processing manual pages under /usr/share/man/id...
+Purging old database entries in /usr/share/man/zh_TW...
+Processing manual pages under /usr/share/man/zh_TW...
+Purging old database entries in /usr/share/man/da...
+Processing manual pages under /usr/share/man/da...
+Purging old database entries in /usr/share/man/it...
+Processing manual pages under /usr/share/man/it...
+Purging old database entries in /usr/share/man/zh_CN...
+Processing manual pages under /usr/share/man/zh_CN...
+Purging old database entries in /usr/share/man/hu...
+Processing manual pages under /usr/share/man/hu...
+Purging old database entries in /usr/share/man/ko...
+Processing manual pages under /usr/share/man/ko...
+Purging old database entries in /usr/share/man/ru...
+Processing manual pages under /usr/share/man/ru...
+Purging old database entries in /usr/share/man/de...
+Processing manual pages under /usr/share/man/de...
+Purging old database entries in /usr/share/man/es...
+Processing manual pages under /usr/share/man/es...
+Purging old database entries in /usr/share/man/nl...
+Processing manual pages under /usr/share/man/nl...
+Purging old database entries in /usr/share/man/sl...
+Processing manual pages under /usr/share/man/sl...
+Purging old database entries in /usr/share/man/tr...
+Processing manual pages under /usr/share/man/tr...
+Purging old database entries in /usr/share/man/pt...
+Processing manual pages under /usr/share/man/pt...
+Purging old database entries in /usr/share/man/pl...
+Processing manual pages under /usr/share/man/pl...
+Purging old database entries in /usr/share/man/ja...
+Processing manual pages under /usr/share/man/ja...
+Processing manual pages under /usr/local/man...
+Updating index cache for path `/usr/local/man/man1'. Wait...done.
+Checking for stray cats under /usr/local/man...
+Checking for stray cats under /var/cache/man/oldlocal...
+1 man subdirectory contained newer manual pages.
+1 manual page was added.
+0 stray cats were added.
+0 old database entries were purged.
+
+rclone v1.44 has successfully installed.
+Now run "rclone config" for setup. Check https://rclone.org/docs/ for more details.
+
+user@ubuntu:~$
+</code></pre>
+
+<h2 id="configuración-de-nuestra-primera-cuenta">Configuración de nuestra primera cuenta</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@ubuntu:~$ rclone config
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@ubuntu:~$ rclone config
+2018/10/30 09:25:59 NOTICE: Config file "/home/user/.config/rclone/rclone.conf" not found - using defaults
+No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&gt; n
+name&gt; miconexion
+Type of storage to configure.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value
+12 / Google Drive
+   \ "drive"
+
+Storage&gt; 12
+** See help for drive backend at: https://rclone.org/drive/ **
+
+Google Application Client Id
+Leave blank normally.
+Enter a string value. Press Enter for the default ("").
+client_id&gt;
+Google Application Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default ("").
+client_secret&gt;
+Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ "drive"
+ 2 / Read-only access to file metadata and file contents.
+   \ "drive.readonly"
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ "drive.file"
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ "drive.appfolder"
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ "drive.metadata.readonly"
+scope&gt; 1
+ID of the root folder
+Leave blank normally.
+Fill in to access "Computers" folders. (see docs).
+Enter a string value. Press Enter for the default ("").
+root_folder_id&gt;
+Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Enter a string value. Press Enter for the default ("").
+service_account_file&gt;
+Edit advanced config? (y/n)
+y) Yes
+n) No
+y/n&gt; n
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine or Y didn't work
+y) Yes
+n) No
+y/n&gt; n
+If your browser doesn't open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;
+Log in and authorize rclone for access
+Enter verification code&gt; 4/hgC5DFGDF4Gp7RKGrV98L_iZPwPblM
+Configure this as a team drive?
+y) Yes
+n) No
+y/n&gt; n
+--------------------
+[miconexion]
+type = drive
+scope = drive
+token = {"access_token":"ya29.GltGBv5vYJ_Vx8Y80cdfg5GF6rAt1Yj23FzrjUw7ciis5Ptl7z99KVXvtXfxLwE0jduhPh-j","token_type":"Bearer","refresh_token":"1/1bscXCzKgh59P5CjnvhHCnExjq-mxFfhw06uM_VghqQPoCWNQflb","expiry":"2018-10-30T10:26:48.927281425+01:00"}
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+Current remotes:
+
+Name                 Type
+====                 ====
+miconexion           drive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
