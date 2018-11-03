@@ -78,7 +78,7 @@ Ya tenemos nuestra SD preparada!
 
 
 
-
+{% comment %}
 Originalmente Escrito por Valný  Ver Mensaje
 Ya que esto se ha convertido en una quasi plataforma comparto por aquí un script para reconectar la red cuando se cae por si lo quieres añadir al OP. En mi caso la Raspberry arranca mucho más rápido que mi router y como detecta que no se puede conectar pues así se queda, como la tengo en modo headless lo único que puedo hacer es reiniciarla a la fuerza una vez el router ya está funcionando para que se conecte y empiece a funcionar bien.
 
@@ -111,3 +111,5 @@ Y añadimos al final del archivo la siguiente línea:
 Y ya está, si queréis probar que funciona podéis parar la red inalámbrica con:
 
 Esto desconectará la sesión SSH (y si lo tenéis configurado como único DNS en el router también desconectará internet en general), esperad 5 minutos y tratad de conectaros a la Raspberry de nuevo, si funciona es que lo habéis hecho bien
+
+{% endcomment %}
